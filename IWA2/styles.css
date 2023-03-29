@@ -21,6 +21,7 @@ body {
   font-family: Roboto, Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   height: 100%;
 }
@@ -46,6 +47,7 @@ body {
 /* counter */
 
 .counter {
+  max-width: 30rem;
   background: var(--color-dark-grey);
 }
 .counter__value {
@@ -95,6 +97,7 @@ body {
   padding: 2rem;
   font-size: 0.8rem;
   text-align: center;
+  width: 100%;
 }
 
 .footer__link {
