@@ -6,7 +6,7 @@ import {role as roleC} from './alex.js'
 
 
 const message ='© ' + company + ' (' + year + ')'
-document.getElementById('footer').innerText = message
+document.querySelector('#footer').innerText = message
 
 
 console.log('Roles:',roleA, roleB, roleC)

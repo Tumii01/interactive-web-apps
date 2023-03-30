@@ -10,8 +10,8 @@ console.log(user, surname)
 /*
  * This is the date that a user created their account 
  */
-var date = "10/07/2014";
-var date = "date"
+let date = "10/07/2014";
+ date = "date"
 console.log(date)
 
 /* 
