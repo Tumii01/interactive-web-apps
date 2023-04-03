@@ -26,11 +26,13 @@ const pens = 5 * NONE_SELECTED;
 if (shoes + batteries + toys + shirts + batteries + pens >= 1000 && customers === 1) {
   shipping = 0;
 }
-else if (customers !== 1) {
+console.log('price', currency, shoes + batteries + pens + shirts + toys + shipping);
+
+ if (customers !== 1) {
   console.log(FREE_WARNING);
 }
 if (country === 'NK') {
   console.log(BANNED_WARNING);
-} else {
-  console.log('price', currency, shoes + batteries + pens + shirts + toys + shipping);
 }
+ 
+
