@@ -2,7 +2,7 @@ const FREE_WARNING = 'Free shipping only applies to single customer orders';
 const BANNED_WARNING = 'Unfortunately we do not ship to your country of residence';
 const NONE_SELECTED = 0;
 const customers = 1;
-let Location = 'NAM';
+let Location = 'RSA'; 
 let currency = 'R';
 let shipping = 0;
 
@@ -23,19 +23,19 @@ const shirts = 150 * NONE_SELECTED;
 const batteries = 35 * 2;
 const pens = 5 * NONE_SELECTED;
 
-if (shoes + batteries + toys + shirts + batteries + pens >= 1000 && customers === 1 && Location === 'NAM' || Location === 'RSA') {
+const calItems = shoes + batteries + toys + shirts + batteries + pens
+
+if (calItems >= 1000 && customers === 1 && (Location === 'RSA' || Location === 'NAM')) {
   shipping = 0;
-  
 }
+
+
 if (Location === 'NK') {
   console.log(BANNED_WARNING);
 }
-else if (customers !== 1) {
+else if (customers !== 1 && (Location === 'RSA' || Location === 'NAM')) { 
   console.log(FREE_WARNING);
 }
-else {console.log('price', currency, shoes + batteries + pens + shirts + toys + shipping);}
-
- 
-
- 
-
+else {
+  console.log('price', currency, shoes + batteries + pens + shirts + toys + shipping);
+}
