@@ -15,9 +15,9 @@ const sarahPostal = '0310'
 
 const leo = {
   name: leoName,
+  age: 24,
   balance: -leoBalance,
   accessId: '47afb389-8014-4d0b-aff3-e40203d2107f',
-  age: 24,
   address: {
     number: leoNumber,
     street: leoStreet,
@@ -28,8 +28,8 @@ const leo = {
 const sarah = {
   name: sarahName + sarahSurname,
   age: 62,
+  balance: parseInt(-sarahBalance),
   accessId: '6b279ae5-5657-4240-80e9-23f6b635f7a8',
-  balance: -sarahBalance,
   address: {
     number: sarahNumber,
     street: sarahStreet,
