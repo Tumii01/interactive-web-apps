@@ -23,9 +23,7 @@ const STATUS_MAP = {
         canCheckout: false,
         canCheckIn: true,
     }
-}
-
-// Edit below line 
+}// Edit below line 
 
 const book1 = {
     status: document.querySelector('#book1 .status'),
@@ -60,7 +58,7 @@ const book1 = {
   book3.reserve.disabled = !STATUS_MAP.shelf.canReserve;
   book3.checkout.disabled = !STATUS_MAP.shelf.canCheckout;
   book3.checkin.disabled = !STATUS_MAP.shelf.canCheckIn;
-document.getElementById()
+
 
 
 

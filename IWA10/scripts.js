@@ -52,8 +52,7 @@ const christmas = 6;
 const futureId = 9;
 
 // Do not change code above this comment
-
-console.log(holidays[futureId] ? holidays[futureId].name : `ID ${futureId} not created yet`);
+console.log(holidays[futureId]?.name || `ID ${futureId} not created yet`);
 
 let copied = holidays[christmas];
 
@@ -95,17 +94,15 @@ const lastHolidayTimestamp = Math.max(
     holidays['8'].date.getTime()
 );
 
-const firstDay = new Date(firstHolidayTimestamp).getDate();
-const firstMonth = new Date(firstHolidayTimestamp).getMonth();
+let firstDay = new Date(firstHolidayTimestamp).getDate()
+const firstMonth = new Date(firstHolidayTimestamp).getMonth(); 
 const lastDay = new Date(lastHolidayTimestamp).getDate();
-const lastMonth = new Date(lastHolidayTimestamp).getMonth();
-
-
-console.log(`0${firstDay}/${firstMonth}1/${currentYear}`);
-console.log(`${lastDay}/${lastMonth}/${currentYear}`);
+const lastMonth = new Date(lastHolidayTimestamp).getMonth() + 1;
 
 
 
-const holidayValues = Object.values(holidays);
-const randomHoliday = holidayValues[Math.floor(Math.random() * holidayValues.length)];
+console.log(`0${firstDay}/0${firstMonth + 1}/${currentYear}`);
+console.log(`${lastDay}/${lastMonth }/${currentYear}`);
+
+ const randomHoliday = holidays[Math.floor(Math.random() * Object.keys(holidays).length)];
 console.log(randomHoliday.date.toLocaleDateString("en-ZA"));
