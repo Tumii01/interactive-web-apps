@@ -8,32 +8,39 @@ const data = {
   };
   
   // Only edit below
-  
+
+  // Initialize variables to extract the names and values of each list
   let [firstListName, firstList] = data.lists[0];
   let [secondListName, secondList] = data.lists[1];
   let [thirdListName, thirdList] = data.lists[2];
-  
+
+  // Initialize an empty array to store the results
   const result = [];
-  
+
+  // A function to extract the largest value from the lists and add it to the result array
   const extractBiggest = () => {
     let largestValue = -Infinity;
     let largestList = null;
-  
+
+  // Check if the last value in the first list is the largest so far
     if (firstList.length > 0 && firstList[firstList.length - 1] > largestValue) {
       largestValue = firstList[firstList.length - 1];
       largestList = firstList;
     }
-  
+
+  // Check if the last value in the second list is the largest so far
     if (secondList.length > 0 && secondList[secondList.length - 1] > largestValue) {
       largestValue = secondList[secondList.length - 1];
       largestList = secondList;
     }
-  
+
+  // Check if the last value in the third list is the largest so far
     if (thirdList.length > 0 && thirdList[thirdList.length - 1] > largestValue) {
       largestValue = thirdList[thirdList.length - 1];
       largestList = thirdList;
     }
-  
+
+  // If a largest value was found, add it to the result array and remove it from its original list
     if (largestList !== null) {
       result.push(largestValue);
       largestList.pop();
