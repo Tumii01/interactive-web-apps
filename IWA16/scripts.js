@@ -101,7 +101,7 @@ const MONTHS = [
     // Returns the HTML fragment with the athlete's information
     return fragment;
   }
-  //[NM372], [SV782] = data
+
   document.querySelector('[data-athlete = "NM372"]').appendChild(createHtml('NM372'));
   document.querySelector('[data-athlete = "SV782"]').appendChild(createHtml('SV782'));
 
