@@ -66,48 +66,49 @@ const MONTHS = [
   // Only edit below this comment
   
   const createHtml = (athlete) => {
-  const [firstName, surname, id, races] = athlete;
-  const [date, timeAsArray] = races[races.length - 1];
-  const [first, second, third, fourth] = timeAsArray;
-  const total = first + second + third + fourth;
-  
-  const fragment = document.createDocumentFragment();
-  
-  const title = document.createElement('h2');
-  title.textContent = id;
-  fragment.appendChild(title);
-  
-  const list = document.createElement('dl');
-  
-  const day = date.getDate();
-  const month = MONTHS[date.getMonth()];
-  const year = date.getFullYear();
-  
-  const hours = Math.floor(total / 60);
-  const minutes = total % 60;
-  
-  list.innerHTML = /* html */ `
-    <dt>Athlete</dt>
-    <dd>${firstName} ${surname}</dd>
+    // Extracts data from the 'response' object for the athlete
+    const extractFrom = data.response.data[athlete];
+    const firstName = extractFrom.firstName;
+    const surname = extractFrom.surname;
+    const races = extractFrom.races.length;
+    // Creates a new document fragment to hold the HTML elements
+    const fragment = document.createDocumentFragment();
+    const list = document.createElement('dl');
+    // Extracts the date of the latest race
+    const date = new Date(extractFrom.races[races - 1].date);
+    const day = date.getDate();
+    const month = MONTHS[date.getMonth()];
+    const year = date.getFullYear();
+    // Extracts the time of the latest race and calculates the total time in minutes
+    const [first, second, third, fourth] = extractFrom.races[races - 1].time;
+    const total = first + second + third + fourth;
+    // Calculates the hours and minutes of the total time
+    const hours = Math.floor(total / 60);
+    const minutes = total ;
+    // Adds the athlete's information to the description list element
+    list.innerHTML = `
+      <dt><h2>Athlete:</h2> ${extractFrom.id}</dt>
+      <dd>${firstName} ${surname}</dd>
+      <dt>Total Races:</dt>
+      <dd>${races}</dd>
+      <dt>Event Date (Latest):</dt>
+      <dd>${day} ${month} ${year}</dd>
+      <dt>Total Time (Latest):</dt>
+      <dd>${hours}:${minutes}</dd>
+    `;
+    // Appends the description list element to the document fragment
+    fragment.appendChild(list);
+    // Returns the HTML fragment with the athlete's information
+    return fragment;
+  }
+  //[NM372], [SV782] = data
+  document.querySelector('[data-athlete = "NM372"]').appendChild(createHtml('NM372'));
+  document.querySelector('[data-athlete = "SV782"]').appendChild(createHtml('SV782'));
 
-    <dt>Total Races</dt>
-    <dd>${races.length}</dd>
 
-    <dt>Event Date (Latest)</dt>
-    <dd>${day} ${month} ${year}</dd>
 
-    <dt>Total Time (Latest)</dt>
-    <dd>${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}</dd>
-  `;
 
-  fragment.appendChild(list);
-  
-  return fragment;
-}
 
-const [NM372, SV782] = data;
-document.querySelector('#' + NM372[2]).appendChild(createHtml(NM372));
-document.querySelector('#' + SV782[2]).appendChild(createHtml(SV782));
 
 
 
