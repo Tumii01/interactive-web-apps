@@ -1,3 +1,4 @@
+// Importing functions from data.js and view.js files
 import { createOrderData,  updateDragging   } from "./data.js";
 import { createOrderHtml, html, updateDraggingHtml } from "./view.js";
 const handleHelpToggle = (event) => {
@@ -7,6 +8,7 @@ const handleHelpToggle = (event) => {
     overlay.close();
   }
 };
+// A function that shows/hides add overlay on clicking add button
 const handleAddToggle = (a) => {
   html.other.add.focus();
   const overlay = html.add.overlay;
@@ -16,6 +18,7 @@ const handleAddToggle = (a) => {
     html.add.form.reset();
   }
 };
+// A function that creates and appends a new order to the DOM on form submission
 const handleAddSubmit = (b) => {
   b.preventDefault();
   const overlay = html.add.overlay;
@@ -28,6 +31,7 @@ const handleAddSubmit = (b) => {
   overlay.close();
   append.appendChild(htmlData);
 };
+// A function that shows/hides edit overlay on clicking an order item
 const handleEditToggle = (c) => {
   const overlay = html.edit.overlay;
   const cancelBtn = html.edit.cancel;
@@ -49,6 +53,7 @@ const handleEditToggle = (c) => {
   }
   html.edit.delete.id = id;
 };
+// A function that updates an existing order and its column or deletes it on form submission
 const handleEditSubmit = (d) => {
   d.preventDefault();
   const idRemove = html.edit.delete.id;
@@ -64,6 +69,7 @@ const handleEditSubmit = (d) => {
   d.target.reset();
   overlay.close();
 };
+// A function that deletes an existing order on clicking the delete button
 const handleDelete = () => {
   const idToBeDeleted = html.edit.delete.id;
   const orderToBeDeleted = document.querySelector(
@@ -73,6 +79,7 @@ const handleDelete = () => {
   orderToBeDeleted.remove();
   overlay.close();
 };
+// Event listeners for various buttons and forms
 html.add.cancel.addEventListener("click", handleAddToggle); 
 html.other.add.addEventListener("click", handleAddToggle); 
 html.add.form.addEventListener("submit", handleAddSubmit); 
@@ -82,6 +89,7 @@ html.edit.form.addEventListener("submit", handleEditSubmit);
 html.edit.delete.addEventListener("click", handleDelete); 
 html.help.cancel.addEventListener("click", handleHelpToggle); 
 html.other.help.addEventListener("click", handleHelpToggle); 
+
 //Dragging events
 /**
 * A handler that fires when a user drags over any element inside a column. In
@@ -120,6 +128,7 @@ const handleDragEnd = (g) => {
   const background = g.target.closest("section");
   background.style.backgroundColor = "";
 };
+// attach event listeners to each column element
 for (const htmlArea of Object.values(html.area)) {
   htmlArea.addEventListener("dragover", handleDragOver);
   htmlArea.addEventListener("dragstart", handleDragStart);
